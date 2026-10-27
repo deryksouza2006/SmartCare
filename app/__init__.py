@@ -1,0 +1,1 @@
+"""PetJourney SmartCare application package."""
