@@ -6,6 +6,15 @@ O SmartCare analisa informações clínicas previamente consolidadas pelo backen
 
 > O SmartCare é uma ferramenta de apoio à decisão. Ele não realiza diagnóstico veterinário e não substitui a avaliação de um médico-veterinário.
 
+## Integrantes
+
+| Nome | RM |
+|---|---|
+| Lucas Gonçalves Viana | 563254 |
+| Deryk de Souza Queiroz | 563412 |
+| Vinicius Paschoeto da Silva | 563089 |
+| Felipe Wiclif Leal da Silva | 563901 |
+
 ---
 
 ## 🔗 Links da entrega
