@@ -8,6 +8,22 @@ O SmartCare analisa informações clínicas previamente consolidadas pelo backen
 
 ---
 
+## 🔗 Links da entrega
+
+| Item | Link |
+|---|---|
+| Vídeo no YouTube | A inserir após a gravação |
+| Repositório SmartCare | [github.com/deryksouza2006/SmartCare](https://github.com/deryksouza2006/SmartCare) |
+| Repositório Mobile | [github.com/deryksouza2006/PetJourney2.0](https://github.com/deryksouza2006/PetJourney2.0) |
+| Repositório Backend Java | [github.com/LucasViana130/api-java-petjourney](https://github.com/LucasViana130/api-java-petjourney) |
+| Deploy SmartCare — Swagger | [Abrir documentação interativa](https://petjourney-smartcare.onrender.com/docs) |
+| Deploy SmartCare — Health Check | [Verificar disponibilidade](https://petjourney-smartcare.onrender.com/health) |
+| Deploy API Java — Swagger | [Abrir documentação da API principal](https://petjourney-api.onrender.com/swagger-ui.html) |
+
+> A rota raiz do SmartCare não possui uma página visual. Para validar o deploy, utilize o Swagger ou o Health Check nos links acima.
+
+---
+
 ## 🎯 Objetivo
 
 Uma clínica veterinária pode possuir diversos pacientes em diferentes situações:
@@ -386,9 +402,9 @@ O Java obtém os dados necessários, prepara a requisição do SmartCare e proce
 
 # 🔐 Controle de acesso
 
-O SmartCare não possui autenticação própria porque não é acessado diretamente pelo usuário.
+No fluxo oficial da aplicação, o usuário não acessa o SmartCare diretamente. O aplicativo chama a API Spring Boot, que realiza autenticação, autorização, consolidação dos dados e comunicação com o microserviço.
 
-A segurança é responsabilidade da API Spring Boot.
+O deploy público do SmartCare existe para documentação, health check e demonstração acadêmica. O microserviço não acessa o banco de dados e não persiste as análises recebidas. O controle dos perfis autorizados no sistema completo permanece sob responsabilidade da API Spring Boot.
 
 Na aplicação, o recurso SmartCare é disponibilizado para:
 
@@ -615,20 +631,32 @@ http://localhost:8001
 
 # 📖 Swagger
 
-A documentação interativa pode ser acessada em:
+A documentação interativa local pode ser acessada em:
 
 ```text
 http://localhost:8001/docs
+```
+
+Em produção:
+
+```text
+https://petjourney-smartcare.onrender.com/docs
 ```
 
 ---
 
 # ❤️ Health Check
 
-Exemplo:
+Exemplo local:
 
 ```bash
 curl http://localhost:8001/health
+```
+
+Em produção:
+
+```text
+https://petjourney-smartcare.onrender.com/health
 ```
 
 Resposta esperada:
@@ -653,16 +681,16 @@ pytest
 
 # 🌐 Repositórios do ecossistema
 
-## Mobile + SmartCare
+## SmartCare
+
+```text
+https://github.com/deryksouza2006/SmartCare
+```
+
+## Mobile
 
 ```text
 https://github.com/deryksouza2006/PetJourney2.0
-```
-
-O microserviço está localizado no diretório:
-
-```text
-smartcare/
 ```
 
 ## Backend Java
@@ -676,6 +704,8 @@ https://github.com/LucasViana130/api-java-petjourney
 # 🎥 Demonstração
 
 A apresentação da 4ª Sprint deve demonstrar o SmartCare integrado ao ecossistema PetJourney.
+
+**Vídeo no YouTube:** link a inserir após a gravação.
 
 Fluxo sugerido:
 
