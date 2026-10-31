@@ -710,31 +710,6 @@ https://github.com/LucasViana130/api-java-petjourney
 
 ---
 
-# 🎥 Demonstração
-
-A apresentação da 4ª Sprint deve demonstrar o SmartCare integrado ao ecossistema PetJourney.
-
-**Vídeo no YouTube:** link a inserir após a gravação.
-
-Fluxo sugerido:
-
-```text
-1. Apresentar o problema
-2. Explicar o SmartCare
-3. Mostrar a arquitetura
-4. Executar o FastAPI
-5. Mostrar os testes
-6. Abrir o PetJourney
-7. Acessar o SmartCare como Veterinário
-8. Mostrar o ranking
-9. Abrir a análise de um pet
-10. Explicar score, prioridade e motivos
-11. Mostrar a integração com o backend
-12. Explicar os benefícios para clínica, veterinário e tutor
-```
-
----
-
 # 🔮 Possíveis evoluções
 
 A arquitetura permite futuras melhorias, como:
