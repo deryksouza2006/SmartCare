@@ -21,7 +21,7 @@ O SmartCare analisa informações clínicas previamente consolidadas pelo backen
 
 | Item | Link |
 |---|---|
-| Vídeo no YouTube | A inserir após a gravação |
+| Vídeo no YouTube | https://www.youtube.com/watch?v=IhXL7GuUPWc |
 | Repositório SmartCare | [github.com/deryksouza2006/SmartCare](https://github.com/deryksouza2006/SmartCare) |
 | Repositório Mobile | [github.com/deryksouza2006/PetJourney2.0](https://github.com/deryksouza2006/PetJourney2.0) |
 | Repositório Backend Java | [github.com/LucasViana130/api-java-petjourney](https://github.com/LucasViana130/api-java-petjourney) |
