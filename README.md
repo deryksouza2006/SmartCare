@@ -25,6 +25,7 @@ O SmartCare analisa informações clínicas previamente consolidadas pelo backen
 | Repositório SmartCare | [github.com/deryksouza2006/SmartCare](https://github.com/deryksouza2006/SmartCare) |
 | Repositório Mobile | [github.com/deryksouza2006/PetJourney2.0](https://github.com/deryksouza2006/PetJourney2.0) |
 | Repositório Backend Java | [github.com/LucasViana130/api-java-petjourney](https://github.com/LucasViana130/api-java-petjourney) |
+| PDF de evidências da integração | [Abrir PDF](docs/evidencias/Evidencias_SmartCare_Integracao.pdf) |
 | Deploy SmartCare — Swagger | [Abrir documentação interativa](https://petjourney-smartcare.onrender.com/docs) |
 | Deploy SmartCare — Health Check | [Verificar disponibilidade](https://petjourney-smartcare.onrender.com/health) |
 | Deploy API Java — Swagger | [Abrir documentação da API principal](https://petjourney-api.onrender.com/swagger-ui.html) |
