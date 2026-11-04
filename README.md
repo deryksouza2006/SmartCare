@@ -51,7 +51,7 @@ O SmartCare foi desenvolvido para transformar essas informações em uma classif
 
 ## 🧠 Abordagem utilizada
 
-O SmartCare utiliza um **motor de regras inteligentes determinístico**.
+O SmartCare utiliza um **sistema especialista baseado em regras**, com motor de inferência determinístico. Trata-se de uma abordagem de IA simbólica: o conhecimento do domínio é representado por regras explícitas, e o motor aplica essas regras aos fatos clínicos recebidos para produzir uma classificação e uma recomendação explicáveis.
 
 Nesta versão, não são utilizados:
 
@@ -69,6 +69,19 @@ A estratégia adotada permite que toda classificação seja:
 - baseada diretamente nos dados clínicos do PetJourney.
 
 O resultado não apresenta apenas uma prioridade: o sistema também informa os fatores que contribuíram para aquela classificação.
+
+### Fundamentação técnica da IA
+
+| Componente | Implementação no SmartCare |
+|---|---|
+| Base de conhecimento | Faixas de tempo, ausência de próximo agendamento e tratamento sem retorno, documentados na seção **Regras de priorização**. |
+| Fatos de entrada | `petId`, data do último atendimento, existência de próximo agendamento e de tratamento registrado. |
+| Motor de inferência | A função `analisar_pet` aplica as regras, soma os pesos e limita o score ao intervalo de 0 a 100. |
+| Saída inteligente | Score, prioridade, motivos rastreáveis e recomendação operacional. |
+| Explicabilidade | Cada ponto atribuído possui um motivo explícito; o mesmo conjunto de fatos sempre produz o mesmo resultado. |
+| Validação | Modelos Pydantic rejeitam dados inválidos e a suíte automatizada verifica regras, fronteiras e contratos HTTP. |
+
+A escolha por regras explícitas é adequada ao protótipo porque não existe, nesta entrega, uma base histórica rotulada e validada para treinar um modelo estatístico. Além de evitar resultados clínicos opacos, essa abordagem permite auditoria, reprodução dos cenários e evolução futura das regras com acompanhamento veterinário. O SmartCare apoia a priorização operacional e não realiza diagnóstico.
 
 ---
 
@@ -506,6 +519,8 @@ Entre os cenários validados estão:
 - validação de `petId`;
 - endpoint `/health`;
 - endpoint `/smartcare/analisar`;
+- determinismo da inferência para a mesma entrada;
+- rejeição de booleanos enviados em formato textual;
 - validações HTTP.
 
 Execução:
@@ -517,9 +532,29 @@ pytest
 Na validação atual do projeto:
 
 ```text
-16 testes executados
-16 testes aprovados
+18 testes executados
+18 testes aprovados
 ```
+
+### Matriz resumida de validação
+
+| Cenário | Resultado esperado |
+|---|---|
+| Atendimento recente, retorno agendado e sem tratamento | Score 0 e prioridade `BAIXA`. |
+| Mais de 180 dias sem atendimento e sem próximo agendamento | Score 50 e prioridade `MEDIA`. |
+| Mais de 365 dias, sem retorno e com tratamento registrado | Score 100 e prioridade `ALTA`. |
+| Data futura, `petId` não positivo ou booleano textual | Requisição rejeitada com validação. |
+| Mesma entrada processada duas vezes | Respostas idênticas. |
+
+## Rastreabilidade dos critérios da disciplina
+
+| Critério | Evidência |
+|---|---|
+| Implementação técnica da IA | Sistema especialista, regras, validação, 18 testes e API FastAPI publicada. |
+| Integração com a aplicação | Fluxo Mobile → Java → PostgreSQL → SmartCare → Java → Mobile, comprovado no PDF de evidências. |
+| Acesso pelo usuário final | Ranking, resumo e detalhe SmartCare disponíveis na área veterinária do aplicativo. |
+| Benefícios | Seções de valor para veterinário, clínica e tutor, além da explicação no vídeo. |
+| Vídeo e documentação | Vídeo de aproximadamente cinco minutos, README, código, testes, deploys e PDF de evidências vinculados no início deste documento. |
 
 ---
 

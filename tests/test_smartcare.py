@@ -104,6 +104,15 @@ def test_pet_id_deve_ser_positivo() -> None:
         )
 
 
+def test_inferencia_e_deterministica() -> None:
+    entrada = criar_request(200, False, True)
+
+    primeiro_resultado = analisar_pet(entrada)
+    segundo_resultado = analisar_pet(entrada)
+
+    assert primeiro_resultado == segundo_resultado
+
+
 @pytest.fixture
 def anyio_backend() -> str:
     return "asyncio"
@@ -169,6 +178,25 @@ async def test_endpoint_rejeita_data_futura() -> None:
                 ).isoformat(),
                 "possuiProximoAgendamento": True,
                 "possuiTratamentoRegistrado": False,
+            },
+        )
+
+    assert response.status_code == 422
+
+
+@pytest.mark.anyio
+async def test_endpoint_rejeita_booleanos_em_formato_textual() -> None:
+    async with AsyncClient(
+        transport=ASGITransport(app=app),
+        base_url="http://test",
+    ) as client:
+        response = await client.post(
+            "/smartcare/analisar",
+            json={
+                "petId": 123,
+                "dataUltimoAtendimento": date.today().isoformat(),
+                "possuiProximoAgendamento": "false",
+                "possuiTratamentoRegistrado": "true",
             },
         )
 
